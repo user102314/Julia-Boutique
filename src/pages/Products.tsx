@@ -18,7 +18,7 @@ const Products = () => {
   });
 
   return (
-    <main className="pt-24 pb-16 min-h-screen">
+    <main className="pt-8 pb-16 min-h-screen">
       <div className="container mx-auto px-4 md:px-8">
         {/* Header */}
         <motion.div
@@ -26,7 +26,7 @@ const Products = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="font-serif text-4xl md:text-6xl font-bold">Collection</h1>
+          <h1 className="font-heading text-4xl md:text-6xl font-bold">Collection</h1>
           <p className="text-muted-foreground mt-3">Découvrez nos robes exclusives</p>
         </motion.div>
 
@@ -34,7 +34,7 @@ const Products = () => {
           {/* Mobile filter toggle */}
           <button
             onClick={() => setFiltersOpen(!filtersOpen)}
-            className="md:hidden flex items-center gap-2 text-sm text-foreground/70 border border-border px-4 py-2.5 rounded-sm self-start"
+            className="md:hidden flex items-center gap-2 text-sm text-muted-foreground border border-border px-4 py-2.5 rounded-full self-start hover:bg-secondary transition-colors"
           >
             {filtersOpen ? <X size={16} /> : <SlidersHorizontal size={16} />}
             Filtres
@@ -49,17 +49,16 @@ const Products = () => {
           >
             {/* Categories */}
             <div>
-              <h3 className="font-serif text-lg mb-3 text-foreground">Catégorie</h3>
+              <h3 className="font-heading text-lg mb-3">Catégorie</h3>
               <div className="space-y-1">
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`block w-full text-left text-sm px-3 py-2 rounded-sm transition-colors ${
-                      selectedCategory === cat
-                        ? "bg-primary/10 text-primary"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                    }`}
+                    className={`block w-full text-left text-sm px-3 py-2 rounded-full transition-all duration-200 ${selectedCategory === cat
+                        ? "gradient-rose text-card shadow-rose"
+                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                      }`}
                   >
                     {cat}
                   </button>
@@ -69,17 +68,16 @@ const Products = () => {
 
             {/* Price */}
             <div>
-              <h3 className="font-serif text-lg mb-3 text-foreground">Prix</h3>
+              <h3 className="font-heading text-lg mb-3">Prix</h3>
               <div className="space-y-1">
                 {priceRanges.map((range, i) => (
                   <button
                     key={range.label}
                     onClick={() => setSelectedPriceRange(i)}
-                    className={`block w-full text-left text-sm px-3 py-2 rounded-sm transition-colors ${
-                      selectedPriceRange === i
-                        ? "bg-primary/10 text-primary"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                    }`}
+                    className={`block w-full text-left text-sm px-3 py-2 rounded-full transition-all duration-200 ${selectedPriceRange === i
+                        ? "gradient-rose text-card shadow-rose"
+                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                      }`}
                   >
                     {range.label}
                   </button>
@@ -89,12 +87,12 @@ const Products = () => {
 
             {/* Sizes */}
             <div>
-              <h3 className="font-serif text-lg mb-3 text-foreground">Taille</h3>
+              <h3 className="font-heading text-lg mb-3">Taille</h3>
               <div className="flex flex-wrap gap-2">
                 {["XS", "S", "M", "L", "XL"].map((size) => (
                   <span
                     key={size}
-                    className="border border-border text-muted-foreground text-xs px-3 py-1.5 rounded-sm hover:border-primary hover:text-primary cursor-pointer transition-colors"
+                    className="border border-border text-muted-foreground text-xs px-3 py-1.5 rounded-full hover:border-primary hover:text-foreground cursor-pointer transition-colors"
                   >
                     {size}
                   </span>

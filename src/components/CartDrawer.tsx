@@ -16,7 +16,7 @@ const CartDrawer = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeCart}
-            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-50"
           />
 
           {/* Drawer */}
@@ -30,8 +30,8 @@ const CartDrawer = () => {
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-border">
               <div className="flex items-center gap-3">
-                <ShoppingBag size={20} className="text-primary" />
-                <h2 className="font-serif text-xl text-foreground">Panier</h2>
+                <ShoppingBag size={20} className="text-rose-dark" />
+                <h2 className="font-heading text-xl">Panier</h2>
                 <span className="text-sm text-muted-foreground">({items.length})</span>
               </div>
               <button onClick={closeCart} className="text-muted-foreground hover:text-foreground transition-colors">
@@ -48,11 +48,11 @@ const CartDrawer = () => {
                     animate={{ opacity: 1 }}
                     className="flex flex-col items-center justify-center h-full text-center"
                   >
-                    <ShoppingBag size={48} className="text-muted-foreground/30 mb-4" />
+                    <ShoppingBag size={48} className="text-primary/40 mb-4" />
                     <p className="text-muted-foreground">Votre panier est vide</p>
                     <button
                       onClick={closeCart}
-                      className="mt-4 text-primary text-sm hover:underline"
+                      className="mt-4 text-rose-dark text-sm hover:underline"
                     >
                       Continuer vos achats
                     </button>
@@ -66,32 +66,32 @@ const CartDrawer = () => {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -50, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="flex gap-4 p-3 glass-card"
+                      className="flex gap-4 p-3 rounded-lg border border-border bg-card"
                     >
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-20 h-24 object-cover rounded-sm flex-shrink-0"
+                        className="w-20 h-24 object-cover rounded-md flex-shrink-0"
                       />
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-serif text-sm text-foreground truncate">{item.name}</h3>
+                        <h3 className="font-heading text-sm font-semibold truncate">{item.name}</h3>
                         <p className="text-xs text-muted-foreground mt-1">
                           {item.color} · Taille {item.size}
                         </p>
-                        <p className="text-primary text-sm font-semibold mt-1">{item.price} DT</p>
+                        <p className="text-rose-dark text-sm font-semibold mt-1">{item.price} DT</p>
 
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              className="w-7 h-7 flex items-center justify-center border border-border text-foreground/60 hover:border-primary hover:text-primary transition-colors rounded-sm"
+                              className="w-7 h-7 flex items-center justify-center rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
                             >
                               <Minus size={12} />
                             </button>
-                            <span className="text-sm w-6 text-center text-foreground">{item.quantity}</span>
+                            <span className="text-sm w-6 text-center font-medium">{item.quantity}</span>
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="w-7 h-7 flex items-center justify-center border border-border text-foreground/60 hover:border-primary hover:text-primary transition-colors rounded-sm"
+                              className="w-7 h-7 flex items-center justify-center rounded-full bg-secondary text-muted-foreground hover:text-foreground transition-colors"
                             >
                               <Plus size={12} />
                             </button>
@@ -115,12 +115,12 @@ const CartDrawer = () => {
               <div className="border-t border-border px-6 py-5 space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Total</span>
-                  <span className="text-xl font-serif font-bold text-foreground">{totalPrice()} DT</span>
+                  <span className="text-xl font-heading font-bold text-gradient-rose">{totalPrice()} DT</span>
                 </div>
                 <Link
                   to="/checkout"
                   onClick={closeCart}
-                  className="block w-full rose-gradient text-primary-foreground text-center py-3.5 text-sm font-medium tracking-wider uppercase rounded-sm hover:opacity-90 transition-opacity"
+                  className="block w-full gradient-rose text-card text-center py-3.5 text-sm font-medium tracking-wider uppercase rounded-full shadow-rose hover:shadow-rose-lg transition-shadow"
                 >
                   Commander
                 </Link>
