@@ -25,8 +25,12 @@ const Navbar = () => {
   const links = [
     { to: "/", label: "Accueil" },
     { to: "/products", label: "Collection" },
-  ];
+    { to: "/*", label: "À propos" },
+    { to: "/*", label: "Promotions" },
+    { to: "/*", label: "Panier " },
+    { to: "/*", label: "Compte " },
 
+  ];
   return (
     <motion.header
       initial={{ y: -100 }}
